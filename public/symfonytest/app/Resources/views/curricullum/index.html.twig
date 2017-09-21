@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Curricullums list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for curricullum in curricullums %}
+            <tr>
+                <td><a href="{{ path('curricullum_show', { 'id': curricullum.id }) }}">{{ curricullum.id }}</a></td>
+                <td>{{ curricullum.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('curricullum_show', { 'id': curricullum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('curricullum_edit', { 'id': curricullum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('curricullum_new') }}">Create a new curricullum</a>
+        </li>
+    </ul>
+{% endblock %}
